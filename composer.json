@@ -1,0 +1,12 @@
+{
+    "name": "alis/lara-tools",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabeta Soro",
+            "email": "gabeta.soro@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
