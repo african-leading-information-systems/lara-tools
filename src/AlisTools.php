@@ -4,6 +4,8 @@ namespace Alis\LaraTools;
 class AlisTools
 {
     /**
+     * Method to translate array to string
+     *
      * @param string $source
      * @param string $delimiter
      * @return array
