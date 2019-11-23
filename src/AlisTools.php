@@ -16,4 +16,19 @@ class AlisTools
             return !empty($item);
         });
     }
+
+    /**
+     * Method to combine each lines of array with other array
+     *
+     * @param array $attributes
+     * @param array $fillData
+     * @return array
+     */
+    private function fillArray (array $attributes, array $fillData): array
+    {
+        $pivotData = array_fill(0, count($attributes), $fillData);
+        $syncData  = array_combine($attributes, $pivotData);
+
+        return $syncData;
+    }
 }
