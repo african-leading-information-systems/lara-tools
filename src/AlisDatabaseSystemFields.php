@@ -17,4 +17,30 @@ class AlisDatabaseSystemFields
         $table->timestamp('lastkey_date', $precision);
         $table->boolean('invalid_y_n')->default(0);
     }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public static function insertData ($id) : array
+    {
+        return [
+            'creator' => $id,
+            'creation_date' => now(),
+            'lastkeyer' => $id,
+            'lastkey_date' => now()
+        ];
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public static function actionData ($id) : array
+    {
+        return [
+            'lastkeyer' => $id,
+            'lastkey_date' => now()
+        ];
+    }
 }
