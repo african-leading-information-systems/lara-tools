@@ -26,7 +26,7 @@ class AlisTools
      * @param array $fillData
      * @return array
      */
-    private function fillArray (array $attributes, array $fillData): array
+    public function fillArray (array $attributes, array $fillData): array
     {
         $pivotData = array_fill(0, count($attributes), $fillData);
         $syncData  = array_combine($attributes, $pivotData);
