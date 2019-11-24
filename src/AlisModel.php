@@ -45,7 +45,7 @@ trait AlisModel {
     }
 
     /**
-     * Use whereLike method to search record on databases
+     * Use whereLike (AND) method to search record on databases
      *
      * @param $query
      * @param $column
@@ -55,6 +55,19 @@ trait AlisModel {
     public function scopeWhereLike($query, $column, $data)
     {
         return $query->where($column, 'like', '%'.$data.'%');
+    }
+	
+	 /**
+     * Use whereLike (OR) method to search record on databases with
+     *
+     * @param $query
+     * @param $column
+     * @param $data
+     * @return mixed
+     */
+	public function scopeOrWhereLike($query, $column, $data)
+    {
+        return $query->orWhere($column, 'like', '%'.$data.'%');
     }
 
     /**
