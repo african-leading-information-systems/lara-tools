@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace Alis\LaraTools\Validator;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
