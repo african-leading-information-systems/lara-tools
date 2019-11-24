@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 trait AlisModel {
     /**
+     * get Valid record
+     *
      * @param $query
      * @return mixed
      */
@@ -14,6 +16,8 @@ trait AlisModel {
     }
 
     /**
+     * Get Invalid record
+     *
      * @param $query
      * @return mixed
      */
@@ -23,6 +27,8 @@ trait AlisModel {
     }
 
     /**
+     * Find record with a id parameter or fail if record don't exist
+     *
      * @param $query
      * @param $id
      * @return mixed
@@ -39,6 +45,8 @@ trait AlisModel {
     }
 
     /**
+     * Use whereLike method to search record on databases
+     *
      * @param $query
      * @param $column
      * @param $data
@@ -47,5 +55,23 @@ trait AlisModel {
     public function scopeWhereLike($query, $column, $data)
     {
         return $query->where($column, 'like', '%'.$data.'%');
+    }
+
+    /**
+     * Alis firstOrCreate method, use this method to find or create new record
+     *
+     * @param $query
+     * @param array $attributes
+     * @param array $values
+     * @param $author
+     * @return mixed
+     */
+    public function scopeAlisFirstOrCreate($query, array $attributes, array $values, $author)
+    {
+        $attributes = array_merge($attributes, ['invalid_y_n' => 0]);
+
+        $values = array_merge($attributes, AlisDatabaseSystemFields::insertData($author));
+
+        return $query->firstOrCreate($attributes, $values);
     }
 }
