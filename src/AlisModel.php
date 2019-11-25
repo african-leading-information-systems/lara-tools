@@ -56,7 +56,7 @@ trait AlisModel {
     {
         return $query->where($column, 'like', '%'.$data.'%');
     }
-	
+
 	 /**
      * Use whereLike (OR) method to search record on databases with
      *
@@ -83,7 +83,7 @@ trait AlisModel {
     {
         $attributes = array_merge($attributes, ['invalid_y_n' => 0]);
 
-        $values = array_merge($attributes, AlisDatabaseSystemFields::insertData($author));
+        $values = array_merge($values, AlisDatabaseSystemFields::insertData($author));
 
         return $query->firstOrCreate($attributes, $values);
     }
