@@ -33,4 +33,28 @@ class AlisTools
 
         return $syncData;
     }
+
+    /**
+     * Method to upload file on disk
+     *
+     * @param $file
+     * @param string $disk
+     * @param string $uploadPath
+     * @param string|null $fileName
+     * @param int|null $height
+     * @param int|null $width
+     * @return string
+     */
+    public static function handleUploadedFile($file, string $disk, string $uploadPath, string $fileName = null, int $height = null, int $width = null): string
+    {
+        if (is_null($fileName)) {
+            $fileName = sha1(date('ymdhis').rand(1,10000));
+        }
+
+        $imgName = $fileName.'.'.$file->getClientOriginalExtension();
+
+        $file->storeAs($uploadPath, $imgName, $disk);
+
+        return $imgName;
+    }
 }
