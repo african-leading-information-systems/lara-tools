@@ -1,6 +1,8 @@
 <?php
 namespace Alis\LaraTools;
 
+use Illuminate\Support\Facades\Storage;
+
 class AlisTools
 {
     /**
@@ -56,5 +58,16 @@ class AlisTools
         $file->storeAs($uploadPath, $imgName, $disk);
 
         return $imgName;
+    }
+    /**
+     * Delete file on storage
+     *
+     * @param string $disk
+     * @param string $filePath
+     * @return bool
+     */
+    public function removeUploadedFile(string $disk, string $filePath): bool
+    {
+        return Storage::disk($disk)->delete($filePath);
     }
 }
