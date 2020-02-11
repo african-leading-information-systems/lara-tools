@@ -66,7 +66,7 @@ class AlisTools
      * @param string $filePath
      * @return bool
      */
-    public function removeUploadedFile(string $disk, string $filePath): bool
+    public static function removeUploadedFile(string $disk, string $filePath): bool
     {
         return Storage::disk($disk)->delete($filePath);
     }
