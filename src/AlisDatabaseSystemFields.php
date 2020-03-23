@@ -2,6 +2,7 @@
 namespace Alis\LaraTools;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 
 class AlisDatabaseSystemFields
 {
@@ -12,9 +13,9 @@ class AlisDatabaseSystemFields
     public static function generateSystemFields(Blueprint $table, $precision = 0)
     {
         $table->bigInteger('creator')->index()->unsigned();
-        $table->timestamp('creation_date', $precision);
+        $table->timestamp('creation_date', $precision)->default(DB::raw('CURRENT_TIMESTAMP'));
         $table->bigInteger('lastkeyer')->index()->unsigned();
-        $table->timestamp('lastkey_date', $precision);
+        $table->timestamp('lastkey_date', $precision)->default(DB::raw('CURRENT_TIMESTAMP'));
         $table->boolean('invalid_y_n')->default(0);
     }
 
